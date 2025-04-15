@@ -136,7 +136,7 @@ export default async function PufectPage() {
             </div>
           </div>
         </div>
-        <ReviewList />
+        <ReviewList slug="purfect-fuel-blend" />
       </div>
     </div>
   );

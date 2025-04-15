@@ -1,9 +1,10 @@
 "use client";
-import OrderCompleteIllustration from "@/assets/illustrations/order-complete-illustration";
+
 import { MotionContainer } from "@/components/animate/motion-container";
 import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon, CloudDownloadIcon } from "lucide-react";
 import Link from "next/link";
+import OrderCompleteIllustration from "../assets/illustrations/order-complete-illustration";
 
 export default function Page() {
   return (

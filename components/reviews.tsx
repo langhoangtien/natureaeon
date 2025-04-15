@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,17 +25,15 @@ import {
 } from "@/components/ui/dialog";
 import Star from "./icons/star-icon";
 import StarIcon from "./icons/star-icon";
-
+import { API_URL } from "@/config";
 import StarThreeQuaterIcon from "./icons/star-three-quarter";
 import { z } from "zod";
-
+import { Input } from "./ui/custom-ui";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
-import { API_URL } from "@/config";
-import { Input } from "./ui/custom-ui";
 
 interface Review {
-  _id: number;
+  _id: string;
   productId: string;
   customer: string;
   title: string;
@@ -61,7 +59,7 @@ interface ResponseReviews {
     totalPages: number;
   };
 }
-
+const STARS_TEXT = ["Terrible", "Poor", "Average", "Good", "Excellent"];
 const reviewSchema = z.object({
   customer: z.string().min(1, "Name is required").max(50, "Name is too long"),
   rating: z
@@ -76,7 +74,7 @@ const reviewSchema = z.object({
     .max(1000, "Content is too long"),
 });
 
-const ReviewList: React.FC = () => {
+const ReviewList = ({ slug }: { slug: string }) => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -89,7 +87,6 @@ const ReviewList: React.FC = () => {
     rating: 5,
     title: "",
     body: "",
-    productId: "purfect-fuel-blend",
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -115,12 +112,12 @@ const ReviewList: React.FC = () => {
   const [filters, setFilters] = useState({
     rating: 5,
     purchaseVerified: false,
-    hasMedia: true,
-    sortBy: "createdAt",
+    hasMedia: false,
+    sortBy: "liked",
     sortOrder: "desc",
   });
 
-  const [likedIds, setLikedIds] = useState<number[]>([]);
+  const [likedIds, setLikedIds] = useState<string[]>([]);
 
   useEffect(() => {
     const likedIds = JSON.parse(localStorage.getItem("likedIds") || "[]");
@@ -128,7 +125,7 @@ const ReviewList: React.FC = () => {
     setLikedIds(likedIds);
   }, []);
 
-  const handleLike = (id: number) => {
+  const handleLike = (id: string) => {
     setLikedIds((prevLikedIds) => {
       const newLikedIds = prevLikedIds.includes(id)
         ? prevLikedIds.filter((likedId) => likedId !== id)
@@ -151,6 +148,7 @@ const ReviewList: React.FC = () => {
       const queryParams = new URLSearchParams({
         page: String(page),
         limit: "10",
+        productId: slug,
         sortBy: filters.sortBy,
         sortOrder: filters.sortOrder,
         ...(filters.rating && { rating: String(filters.rating) }),
@@ -160,9 +158,6 @@ const ReviewList: React.FC = () => {
         }),
       });
       const res = await fetch(`${API_URL}/reviews?${queryParams.toString()}`);
-      if (!res.ok) {
-        return;
-      }
       const json: ResponseReviews = await res.json();
 
       setReviews((prev) => (reset ? json.data : [...prev, ...json.data]));
@@ -188,25 +183,29 @@ const ReviewList: React.FC = () => {
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
-    // Submit the form data to the server or perform any other action
+
+    const data = { ...formData, productId: slug };
     try {
-      const response = await fetch(`${API_URL}/reviews/client-review`, {
+      const response = await fetch(`${API_URL}/client/review`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
-      await response.json();
+      const responseData = await response.json();
       if (response.ok) {
         setOpen(false);
+        setReviews((pre) => [
+          ...pre,
+          { ...responseData, _id: `${responseData._id}_new` },
+        ]);
         setFormData({
           customer: "",
           email: "",
           rating: 5,
           title: "",
           body: "",
-          productId: "purfect-fuel-blend",
         });
         toast.success("Review submitted successfully!");
       }
@@ -281,7 +280,11 @@ const ReviewList: React.FC = () => {
           </Button>
         </div>
 
-        <Select onValueChange={handleChangeSort} defaultValue="createdAt_desc">
+        <Select
+          value={`${filters.sortBy}_${filters.sortOrder}`}
+          onValueChange={handleChangeSort}
+          defaultValue="createdAt_desc"
+        >
           <SelectTrigger className="w-32 rounded-xs">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
@@ -375,7 +378,7 @@ const ReviewList: React.FC = () => {
       <div className="text-center flex justify-center mt-4 w-full">
         {page < pagination.totalPages && (
           <Button
-            onClick={() => fetchReviews(page + 1)}
+            onClick={() => fetchReviews(page + 1, false)}
             disabled={loading}
             className="flex items-center gap-2"
             variant="default"
@@ -417,6 +420,7 @@ const ReviewList: React.FC = () => {
                   );
                 })}
               </div>
+              <p>{STARS_TEXT[formData.rating - 1]}</p>
               <div>
                 <Input
                   type="text"

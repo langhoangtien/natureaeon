@@ -1,13 +1,17 @@
 "use client";
+
+import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Input, Select } from "@/components/ui/custom-ui";
-import { Textarea } from "@/components/ui/textarea";
-import { API_URL, CONTACT_ADDRESS, CONTACT_EMAIL } from "@/config";
-
 import { CheckCheck } from "lucide-react";
-import { useState } from "react";
+import {
+  API_URL,
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+} from "@/config";
 import { toast } from "sonner";
-import { z } from "zod";
 
 interface FormData {
   name: string;
@@ -28,42 +32,38 @@ const issueOptions = [
   "Other reasons",
 ];
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const contactSchema = z.object({
-  name: z.string().min(1, "Name is required").max(200).optional(),
-  email: z.string().email().max(100),
-  message: z.string().max(1000).optional(),
-  phone: z.string().max(20).optional(),
-  issueType: z.string().min(1).max(200).optional(),
-});
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     message: "",
-    issueType: "",
+    issueType: issueOptions[0],
     attachments: [],
   });
-  // const [errors, setErrors] = useState<
-  //   Partial<FormData & { attachmentsError?: string }>
-  // >({});
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<
+    Partial<FormData & { attachmentsError?: string }>
+  >({});
   const [submitted, setSubmitted] = useState(false);
-  const validateForm = () => {
-    const result = contactSchema.safeParse(formData);
-    if (!result.success) {
-      const errorMap: Record<string, string> = {};
-      result.error.errors.forEach((err) => {
-        errorMap[err.path.join(".")] = err.message;
-      });
-      setErrors(errorMap);
-      console.log(errorMap);
 
-      return false;
-    }
-    setErrors({});
-    return true;
+  const validate = (): boolean => {
+    const newErrors: Partial<FormData & { attachmentsError?: string }> = {};
+
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.issueType) newErrors.issueType = "Issue type is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Invalid email format";
+    if (formData.phone && !/^\d{7,15}$/.test(formData.phone))
+      newErrors.phone = "Phone number must be 7-15 digits";
+    if (!formData.message) newErrors.message = "Message is required";
+    if (formData.attachments.length > 10)
+      newErrors.attachmentsError = "Maximum 10 files allowed";
+    if (formData.attachments.some((file) => file.size > 3 * 1024 * 1024))
+      newErrors.attachmentsError = "Each file must be under 3MB";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
   const handleChange = (
     e: React.ChangeEvent<
@@ -96,27 +96,33 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      const form = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        issueType: formData.issueType,
-      };
-      const res = await fetch(`${API_URL}/client/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) {
+    if (validate()) {
+      try {
+        const form = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          issueType: formData.issueType,
+        };
+        const res = await fetch(`${API_URL}/client/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) {
+          toast.error("Failed to send message");
+          return;
+        }
+        toast.success("Message sent successfully");
+
+        setSubmitted(true);
+      } catch (error) {
+        console.error("Error sending message:", error);
         toast.error("Failed to send message");
-        return;
       }
-      toast.success("Message sent successfully");
-      setSubmitted(true);
     }
   };
   return (
@@ -184,6 +190,9 @@ export default function ContactForm() {
                 </option>
               ))}
             </Select>
+            {errors.issueType && (
+              <p className="text-destructive text-sm">{errors.issueType}</p>
+            )}
           </div>
           <div className="col-span-2">
             <Textarea
@@ -238,7 +247,7 @@ export default function ContactForm() {
             {CONTACT_EMAIL}
           </a>
           <br />
-          <strong>Phone</strong>: +1 302 590 6135
+          <strong>Phone</strong>: {CONTACT_PHONE}
         </p>
       </div>
     </div>

@@ -1,0 +1,48 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to VPS
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+        run: |
+          echo "🔐 Connecting to VPS and deploying..."
+
+          ssh -o StrictHostKeyChecking=no root@$VPS_IP << 'EOF'
+            set -e  # Dừng script nếu gặp lỗi
+
+            echo "📁 Chuyển đến thư mục dự án"
+            cd /var/www/natureaeon.com
+
+            echo "🔁 Git pull"
+            git pull origin main
+
+            echo "🛑 Dừng và xoá container cũ (nếu có)"
+            docker stop natureaeon-fe-container || true
+            docker rm natureaeon-fe-container || true
+
+            echo "🧹 Xoá image cũ"
+            docker rmi natureaeon-fe || true
+
+            echo "🛠️ Build image mới"
+            docker build -t natureaeon-fe .
+
+            echo "🚀 Chạy container mới"
+            docker run -d --name natureaeon-fe-container -p 4010:4010 natureaeon-fe
+          EOF

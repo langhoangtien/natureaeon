@@ -17,7 +17,7 @@ export default function SearchHeader() {
           className="size-6 text-gray-800 cursor-pointer"
         ></SearchIcon>
       </SheetTrigger>
-      <SheetContent showClose={false} side={"top"}>
+      <SheetContent side={"top"}>
         <SheetHeader>
           <SheetTitle></SheetTitle>
         </SheetHeader>

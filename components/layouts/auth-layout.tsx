@@ -1,10 +1,4 @@
-import { AuthProvider } from "@/context/auth/auth-context";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "OptiLife Blend",
-  description: "OptiLife Blend",
-};
+import { AuthProvider } from "../auth/auth-context";
 
 export default function AuthLayout({
   children,
