@@ -70,7 +70,7 @@ export default function SectionSix() {
             studies.
           </p>
 
-          <div className="flex md:gap-8 gap-4 text-center text-primary mt-6">
+          <div className="flex md:gap-8 gap-4 text-center text-green-600 mt-6">
             {effects.map((effect) => (
               <div
                 key={effect.title}
