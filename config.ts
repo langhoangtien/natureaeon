@@ -27,7 +27,7 @@ export const SETTINGS = {
   COMPANY_NAME: "Naturaeon",
   CONTACT_EMAIL: "contact@naturaeon.com",
   CONTACT_PHONE: "+1 213 800 9944",
-  CONTACT_ADDRESS: "1111B S Governors Ave STE 28573 Dover Daleware 19904",
+  CONTACT_ADDRESS: "1111B S Governors Ave STE 29227 Dover, DE 19904",
   CONTACT_WEBSITE: "https://www.naturaeon.com",
 };
 export const PRODUCT_NAME = SETTINGS.PRODUCT_NAME;

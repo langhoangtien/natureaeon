@@ -12,9 +12,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Natureaeon",
-  description:
-    "Natureaeon is a wellness brand that offers premium supplements.",
+  title: "Naturaeon",
+  description: "Naturaeon is a wellness brand that offers premium supplements.",
 };
 
 export default function RootLayout({
