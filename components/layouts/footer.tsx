@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ListPaymentMethod from "../list-payment-method";
-import { COMPANY_NAME, CONTACT_EMAIL } from "@/config";
+import { COMPANY_NAME } from "@/config";
 
 const MENU = [
   {
@@ -55,12 +55,6 @@ export default function Footer() {
             data-loaded="false"
             src="/logo-footer.png"
           />
-
-          {/* <div className="flex space-x-4 mt-4 text-xl">
-          <FaFacebookF className="cursor-pointer hover:text-blue-500" />
-          <FaYoutube className="cursor-pointer hover:text-red-500" />
-          <FaTiktok className="cursor-pointer hover:text-black" />
-        </div> */}
         </div>
 
         {/* More Info */}
