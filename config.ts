@@ -23,7 +23,7 @@ export const CONFIG: ConfigValue = {
 };
 
 export const SETTINGS = {
-  PRODUCT_NAME: "Natureaeon ™",
+  PRODUCT_NAME: "NatureAeon ™",
   COMPANY_NAME: "Nature Aeon",
   CONTACT_EMAIL: "contact@natureaeon.com",
   CONTACT_PHONE: "+1 213 800 9944",

@@ -4,20 +4,21 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PRODUCT_NAME } from "@/config";
 import Image from "next/image";
 const data = [
   {
-    title: "How do I use OptiLife ™ products?",
+    title: `How do I use ${PRODUCT_NAME} products?`,
     content:
       "For best results, take the recommended dosage daily with water or food as directed on the product label.",
   },
   {
-    title: "What are the effects of OptiLife ™ supplements?",
+    title: `What are the effects of ${PRODUCT_NAME} supplements?`,
     content:
       "Our supplements are designed to support overall health, vitality, and well-being. They may help boost energy levels, promote immune function, enhance skin health, and support hormonal balance.",
   },
   {
-    title: "How does OptiLife ™ work?",
+    title: `How does ${PRODUCT_NAME} work?`,
     content:
       "Our supplements harnesses the power of natural ingredients like sea moss, shilajit, and ashwagandha to provide essential nutrients, support hormone regulation, and promote overall wellness.",
   },
@@ -27,9 +28,9 @@ const data = [
       "Our supplements are formulated with natural ingredients and are generally safe for most individuals. However, it's always recommended to consult with a healthcare professional before starting any new supplement regimen, especially if you have any pre-existing health conditions or are taking medication.",
   },
   {
-    title: "Is OptiLife ™ suitable for vegetarians/vegans?",
+    title: `Is ${PRODUCT_NAME} suitable for vegetarians/vegans?`,
     content:
-      "YOur supplements are formulated with natural ingredients and are generally safe for most individuals. However, it's always recommended to consult with a healthcare professional before starting any new supplement regimen, especially if you have any pre-existing health conditions or are taking medication.",
+      "Your supplements are formulated with natural ingredients and are generally safe for most individuals. However, it's always recommended to consult with a healthcare professional before starting any new supplement regimen, especially if you have any pre-existing health conditions or are taking medication.",
   },
 ];
 export default function SectionSeven() {

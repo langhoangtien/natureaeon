@@ -90,7 +90,7 @@ export default function SectionSix() {
           </div>
 
           <div className="mt-8 space-y-4">
-            <Link href="/products/purfect-fuel-blend">
+            <Link href="/products/optilife-blend">
               {" "}
               <Button size="lg" className="h-14">
                 Start your {PRODUCT_NAME} Today <MoveRightIcon />
