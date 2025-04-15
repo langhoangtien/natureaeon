@@ -23,12 +23,12 @@ export const CONFIG: ConfigValue = {
 };
 
 export const SETTINGS = {
-  PRODUCT_NAME: "NatureAeon ™",
-  COMPANY_NAME: "Nature Aeon",
-  CONTACT_EMAIL: "contact@natureaeon.com",
+  PRODUCT_NAME: "Naturaeon ™",
+  COMPANY_NAME: "Naturaeon",
+  CONTACT_EMAIL: "contact@naturaeon.com",
   CONTACT_PHONE: "+1 213 800 9944",
   CONTACT_ADDRESS: "1111B S Governors Ave STE 28573 Dover Daleware 19904",
-  CONTACT_WEBSITE: "https://www.natureaeon.com",
+  CONTACT_WEBSITE: "https://www.naturaeon.com",
 };
 export const PRODUCT_NAME = SETTINGS.PRODUCT_NAME;
 export const COMPANY_NAME = SETTINGS.COMPANY_NAME;

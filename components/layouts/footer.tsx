@@ -39,7 +39,7 @@ export default function Footer() {
         {/* Company Info */}
         <div className="space-y-4">
           <Image
-            width={100}
+            width={150}
             height={100}
             style={{
               borderWidth: 0,
@@ -48,15 +48,14 @@ export default function Footer() {
               boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
               borderRadius: 100,
             }}
-            className="image p-0 w-auto object-contain size-32  aspect-square"
+            className="image p-0 w-auto object-contain size-48  aspect-square"
             draggable="false"
             alt=""
             decoding="async"
             data-loaded="false"
             src="/logo-footer.png"
           />
-          <h2 className="text-2xl font-bold">{COMPANY_NAME} LLC.</h2>
-          <p className="text-sm mt-2">Email: {CONTACT_EMAIL}</p>
+
           {/* <div className="flex space-x-4 mt-4 text-xl">
           <FaFacebookF className="cursor-pointer hover:text-blue-500" />
           <FaYoutube className="cursor-pointer hover:text-red-500" />
