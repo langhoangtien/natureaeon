@@ -34,7 +34,7 @@ const MENU = [
 ];
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 text-gray-800 py-8 px-4 md:px-16">
+    <footer className="border-t bg-accent border-gray-200 text-gray-800 py-8 px-4 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Company Info */}
         <div className="space-y-4">
