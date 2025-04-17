@@ -6,7 +6,7 @@ import Logo from "../logo";
 
 export const menu = [
   { name: "About Us", link: "/about-us" },
-  { name: "Buy", link: "/products/optilife-blend" },
+  { name: "Buy", link: "/products/naturaeon-blend" },
   { name: "Contact", link: "/contact-us" },
   { name: "Track Order", link: "/track-order" },
 ];

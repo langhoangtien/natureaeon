@@ -68,7 +68,7 @@ export default function SectionThree() {
 
           {/* Button Section */}
           <div className="flex items-center">
-            <Link href="/products/optilife-blend" className=" ">
+            <Link href="/products/naturaeon-blend" className=" ">
               <Button size="lg" className="h-14">
                 The {PRODUCT_NAME} Difference
               </Button>

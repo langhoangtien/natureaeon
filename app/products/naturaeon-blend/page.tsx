@@ -1,6 +1,5 @@
 import ProductDetailCarousel from "./views/product-carosel";
 
-import StarIcon from "@/components/star-icon";
 import { Heart, TruckIcon, Undo2Icon } from "lucide-react";
 import {
   Accordion,
@@ -14,6 +13,8 @@ import { AddToCartPurfectSection } from "./views/add-to-cart-purfect";
 
 import ListPaymentMethod from "@/components/list-payment-method";
 import ReviewList from "@/components/reviews";
+import StarThreeQuaterIcon from "@/components/icons/star-three-quarter";
+import StarIcon from "@/components/icons/star-icon";
 const data = [
   {
     title: "Description",
@@ -50,8 +51,8 @@ type Image = {
     url: string;
   };
 };
-export default async function PufectPage() {
-  const product = await getProductBySlug("optilife-blend");
+export default async function NaturaeonPage() {
+  const product = await getProductBySlug("naturaeon-blend");
 
   if (!product) return notFound();
 
@@ -70,11 +71,11 @@ export default async function PufectPage() {
           <div className="flex flex-col space-y-4">
             <div className="flex items-center justify-start space-x-2 text-gray-600  text-lg">
               <span className="text-green-900 flex space-x-1 text-lg mr-2">
-                <StarIcon className="w-5 h-5" />
-                <StarIcon className="w-5 h-5" />
-                <StarIcon className="w-5 h-5" />
-                <StarIcon className="w-5 h-5" />
-                <StarIcon className="w-5 h-5" />
+                <StarIcon className="size-5" />
+                <StarIcon className="size-5" />
+                <StarIcon className="size-5" />
+                <StarIcon className="size-5" />
+                <StarThreeQuaterIcon className="size-5" />
               </span>
               <span>
                 4.9 stars <strong className="text-green-700">100,000+</strong>{" "}

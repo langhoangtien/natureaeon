@@ -119,14 +119,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
         ))}
       </ul>
       <div className="flex justify-between items-center mt-4">
-        <Link href="/products/optilife-blend">
+        <Link href="/products/naturaeon-blend">
           <Button variant={variant} className="h-14 w-32">
             {" "}
             Try Now
           </Button>
         </Link>
         <Link
-          href="/products/optilife-blend"
+          href="/products/naturaeon-blend"
           className="text-primary hover:text-primary px-2 hover:border-primary font-semibold border-b-2"
         >
           Learn <br /> more

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { toast } from "sonner";
 
-import ProductDetailCarousel from "../optilife-blend/views/product-carosel";
+import ProductDetailCarousel from "../naturaeon-blend/views/product-carosel";
 import useCart from "@/components/cart/cart-context";
 
 export default function ProductView(data: { data: Product }) {
