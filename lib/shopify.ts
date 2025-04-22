@@ -247,6 +247,8 @@ export const getProductBySlug = async (slug: string): Promise<Product> => {
   `;
 
   const data = await ShopifyFetch(query, { handle: slug });
+  console.log(data);
+
   return data?.data?.productByHandle;
 };
 
