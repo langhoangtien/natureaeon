@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import Newsletter from "@/components/news-letter";
 
-import Logo from "@/components/logo";
 import Link from "next/link";
+import { Logo } from "../logo";
 
 export const metadata: Metadata = {
   title: "OptiLife Blend",

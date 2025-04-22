@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
-
-import Logo from "@/components/logo";
+import { Logo } from "../logo";
 
 export default function HeaderCheckout() {
   return (

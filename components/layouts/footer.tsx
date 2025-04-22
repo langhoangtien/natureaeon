@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import ListPaymentMethod from "../list-payment-method";
 import { COMPANY_NAME } from "@/config";
