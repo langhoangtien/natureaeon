@@ -7,7 +7,7 @@ import SectionTwo from "./section-two";
 
 export default function OptiLifeHome() {
   return (
-    <div className="bg-white">
+    <div>
       <SectionOne />
       <SectionTwo />
       <SectionThree />

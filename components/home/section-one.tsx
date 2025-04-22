@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import StarIcon from "../icons/star-icon";
 import StarThreeQuaterIcon from "../icons/star-three-quarter";
-import { PRODUCT_NAME } from "@/config";
+import { PRODUCT_NAME, PRODUCT_SLUG } from "@/config";
 import Link from "next/link";
 
 export const StarRating = ({
@@ -47,7 +47,7 @@ export default function SectionOne() {
               & Shilajit bundle.{" "}
             </p>
             <div className="flex flex-col space-y-2  md:space-y-4 items-center md:items-start ">
-              <Link href={"/products/naturaeon-blend"}>
+              <Link href={`/products/${PRODUCT_SLUG}`}>
                 <Button
                   size="lg"
                   className="h-14 flex items-center justify-between"

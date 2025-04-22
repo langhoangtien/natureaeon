@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ListPaymentMethod from "../list-payment-method";
 import { COMPANY_NAME } from "@/config";
+import { LogoWithLink } from "../logo";
 
 const MENU = [
   {
@@ -34,34 +35,18 @@ const MENU = [
 ];
 export default function Footer() {
   return (
-    <footer className="border-t bg-accent border-gray-200 text-gray-800 py-8 px-4 md:px-16">
+    <footer className="border-t bg-accent border-border  py-8 px-4 md:px-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Company Info */}
         <div className="space-y-4">
-          <Image
-            width={150}
-            height={100}
-            style={{
-              borderWidth: 0,
-              borderStyle: "solid",
-              borderColor: "rgba(var(--color-4), 1)",
-              boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
-              borderRadius: 100,
-            }}
-            className="image p-0 w-auto object-contain size-48  aspect-square"
-            draggable="false"
-            alt=""
-            decoding="async"
-            data-loaded="false"
-            src="/logo-footer.png"
-          />
+          <LogoWithLink />
         </div>
 
         {/* More Info */}
         {MENU.map((item) => (
           <div key={item.title}>
             <h3 className="text-lg mb-4 font-semibold">{item.title}</h3>
-            <ul className="mt-2 space-y-3 text-gray-500 text-base">
+            <ul className="mt-2 space-y-4  text-base">
               {item.items.map((subItem) => (
                 <li
                   key={subItem.title}

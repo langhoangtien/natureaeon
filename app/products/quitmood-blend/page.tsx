@@ -1,5 +1,3 @@
-import ProductDetailCarousel from "./views/product-carosel";
-
 import { Heart, TruckIcon, Undo2Icon } from "lucide-react";
 import {
   Accordion,
@@ -9,12 +7,13 @@ import {
 } from "@/components/ui/accordion";
 import { getProductBySlug } from "@/lib/shopify";
 import { notFound } from "next/navigation";
-import { AddToCartPurfectSection } from "./views/add-to-cart-purfect";
 
 import ListPaymentMethod from "@/components/list-payment-method";
 import ReviewList from "@/components/reviews";
 import StarThreeQuaterIcon from "@/components/icons/star-three-quarter";
 import StarIcon from "@/components/icons/star-icon";
+import ProductDetailCarousel from "../naturaeon-blend/views/product-carosel";
+import { AddToCartPurfectSection } from "../naturaeon-blend/views/add-to-cart-purfect";
 import { PRODUCT_NAME } from "@/config";
 const data = [
   {

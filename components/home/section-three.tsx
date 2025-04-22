@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { PRODUCT_NAME } from "@/config";
+import { PRODUCT_NAME, PRODUCT_SLUG } from "@/config";
 import Image from "next/image";
 
 const stats = [
@@ -68,7 +68,7 @@ export default function SectionThree() {
 
           {/* Button Section */}
           <div className="flex items-center">
-            <Link href="/products/naturaeon-blend" className=" ">
+            <Link href={`/products/${PRODUCT_SLUG}`} className=" ">
               <Button size="lg" className="h-14">
                 The {PRODUCT_NAME} Difference
               </Button>

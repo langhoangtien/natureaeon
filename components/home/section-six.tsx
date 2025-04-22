@@ -5,7 +5,7 @@ import {
   MoveRightIcon,
   ShieldCheck,
 } from "lucide-react";
-import { PRODUCT_NAME } from "@/config";
+import { PRODUCT_NAME, PRODUCT_SLUG } from "@/config";
 import Link from "next/link";
 
 const effects = [
@@ -90,7 +90,7 @@ export default function SectionSix() {
           </div>
 
           <div className="mt-8 space-y-4">
-            <Link href="/products/naturaeon-blend">
+            <Link href={`/products/${PRODUCT_SLUG}`}>
               {" "}
               <Button size="lg" className="h-14">
                 Start your {PRODUCT_NAME} Today <MoveRightIcon />

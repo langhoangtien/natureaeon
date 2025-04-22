@@ -4,7 +4,7 @@ import React from "react";
 import StarIcon from "../icons/star-icon";
 import { StarRating } from "./section-one";
 import { Button } from "../ui/button";
-import { PRODUCT_NAME } from "@/config";
+import { PRODUCT_NAME, PRODUCT_SLUG } from "@/config";
 import Link from "next/link";
 import Image from "next/image";
 const works = [
@@ -119,14 +119,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
         ))}
       </ul>
       <div className="flex justify-between items-center mt-4">
-        <Link href="/products/naturaeon-blend">
+        <Link href={`/products/${PRODUCT_SLUG}`}>
           <Button variant={variant} className="h-14 w-32">
             {" "}
             Try Now
           </Button>
         </Link>
         <Link
-          href="/products/naturaeon-blend"
+          href={`/products/${PRODUCT_SLUG}`}
           className="text-primary hover:text-primary px-2 hover:border-primary font-semibold border-b-2"
         >
           Learn <br /> more

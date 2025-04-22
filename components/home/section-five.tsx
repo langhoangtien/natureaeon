@@ -79,7 +79,7 @@ export default function SectionFive() {
         <div className="grid md:grid-cols-3 max-w-7xl w-full mx-auto grid-cols-1 p-4 gap-8">
           {reviews.map((review) => (
             <div key={review.name}>
-              <div className="bg-white p-4 rounded-2xl shadow-md items-center flex flex-col space-y-4 justify-center">
+              <div className="bg-accent p-4 rounded-2xl shadow-md items-center flex flex-col space-y-4 justify-center">
                 <Image
                   src={review.image}
                   className="size-60 aspect-square object-cover rounded-xs"
@@ -95,7 +95,7 @@ export default function SectionFive() {
                   <StarIcon className="size-7" />
                   <StarIcon className="size-7" />
                 </span>
-                <p className="text-base  text-center text-gray-800 italic mb-4">
+                <p className="text-base  text-center text-accent-foreground italic mb-4">
                   “{review.content}”
                 </p>
                 <div className="flex items-center font-semibold justify-between">

@@ -22,17 +22,10 @@ export const CONFIG: ConfigValue = {
    */
 };
 
-export const SETTINGS = {
-  PRODUCT_NAME: "Naturaeon ™",
-  COMPANY_NAME: "Naturaeon",
-  CONTACT_EMAIL: "contact@naturaeon.com",
-  CONTACT_PHONE: "+1 213 800 9944",
-  CONTACT_ADDRESS: "1111B S Governors Ave STE 29227 Dover, DE 19904",
-  CONTACT_WEBSITE: "https://www.naturaeon.com",
-};
-export const PRODUCT_NAME = SETTINGS.PRODUCT_NAME;
-export const COMPANY_NAME = SETTINGS.COMPANY_NAME;
-export const CONTACT_EMAIL = SETTINGS.CONTACT_EMAIL;
-export const CONTACT_PHONE = SETTINGS.CONTACT_PHONE;
-export const CONTACT_ADDRESS = SETTINGS.CONTACT_ADDRESS;
-export const CONTACT_WEBSITE = SETTINGS.CONTACT_WEBSITE;
+export const PRODUCT_NAME = process.env.NEXT_PUBLIC_PRODUCT_NAME;
+export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME;
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+export const CONTACT_PHONE = process.env.NEXT_PUBLIC_CONTACT_PHONE;
+export const CONTACT_ADDRESS = process.env.NEXT_PUBLIC_CONTACT_ADDRESS;
+export const CONTACT_WEBSITE = process.env.NEXT_PUBLIC_CONTACT_WEBSITE;
+export const PRODUCT_SLUG = process.env.NEXT_PUBLIC_PRODUCT_SLUG;
