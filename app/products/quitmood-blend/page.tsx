@@ -53,7 +53,6 @@ type Image = {
 };
 export default async function NaturaeonPage() {
   const product = await getProductBySlug("naturaeon-blend");
-  console.log(product);
 
   if (!product) return notFound();
 

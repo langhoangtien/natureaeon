@@ -171,10 +171,10 @@ export function AddToCartPurfectSection({
         {product.variants.edges.map((item: { node: ProductVariant }, index) => (
           <label
             onClick={() => handleSetVariant(item.node.id)}
-            className={`flex text-background justify-between cursor-pointer items-center duration-300 transition-all rounded-full border h-[76px] py-6 px-4 border-border ${
+            className={`flex  justify-between  cursor-pointer border-2 items-center duration-300 transition-all rounded-full  h-[76px] py-6 px-4  ${
               item.node.id === variant?.id
-                ? "dark:bg-gray-300 bg-gray-900 "
-                : "dark:bg-gray-100 bg-gray-600"
+                ? "dark:border-gray-300 border-gray-800 "
+                : "dark:border-gray-100 border-gray-300"
             }`}
             key={item.node.id}
             htmlFor={item.node.id}
@@ -212,9 +212,15 @@ export function AddToCartPurfectSection({
 
 const RadioCustom = ({ checked }: { checked: boolean }) => {
   return (
-    <div className="flex border-2 border-background/80 items-center  justify-center rounded-full size-6">
+    <div
+      className={`flex border-2  items-center justify-center rounded-full size-6 ${
+        checked ? "border-accent-foreground/80" : "border-accent-foreground/40"
+      }`}
+    >
       <span
-        className={`${checked ? "size-3 bg-accent/80" : ""} rounded-full`}
+        className={`${
+          checked ? "size-3 bg-accent-foreground/80" : ""
+        } rounded-full`}
       ></span>
     </div>
   );
